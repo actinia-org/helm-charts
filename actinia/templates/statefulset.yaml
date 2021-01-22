@@ -1,0 +1,185 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "actinia.fullname" . }}
+  labels:
+    {{- include "actinia.labels" . | nindent 4 }}
+spec:
+  serviceName: {{ include "actinia.fullname" . }}
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "actinia.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "actinia.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "actinia.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: download-data
+          image: ubuntu
+          command: ["/bin/sh","/mnt/init-data.sh"]
+          volumeMounts:
+            - name: temp
+              mountPath: /mnt/download
+            - name: init-configmap
+              mountPath: /mnt/
+            - name: grassdb
+              mountPath: /actinia_core/grassdb/
+            - name: userdata
+              mountPath: /actinia_core/userdata/
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ['sh']
+          args: ['/src/start/start.sh']
+          ports:
+            - name: actinia-tcp
+              containerPort: 8088
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health_check
+              port: actinia-tcp
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health_check
+              port: actinia-tcp
+            timeoutSeconds: 5
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: startup
+              mountPath: /src/start
+            - name: config
+              mountPath: /etc/default/actinia-config
+            - name: secret
+              mountPath: /mnt/pgpass/
+            - name: grassdb
+              mountPath: /actinia_core/grassdb/
+            - name: userdata
+              mountPath: /actinia_core/userdata/
+            - name: resources
+              mountPath: /actinia_core/resources/
+            - name: geodata
+              mountPath: /mnt/geodata/
+            - name: grass-tmp-database
+              mountPath: /actinia_core/workspace/
+          env:
+            - name: DEFAULT_CONFIG_PATH
+              value: /etc/default/actinia-config/actinia.cfg
+            - name: UP42_PROJECT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "actinia.fullname" . }}
+                  key: UP42_PROJECT_ID
+            - name: UP42_PROJECT_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "actinia.fullname" . }}
+                  key: UP42_PROJECT_API_KEY
+      volumes:
+        - name: temp
+          emptyDir: {}
+        - name: init-configmap
+          configMap:
+            name: {{ include "actinia.fullname" . }}
+            items:
+              - key: init-data.sh
+                path: init-data.sh
+        {{- if .Values.persistence.enabled }}
+        - name: grassdb
+          persistentVolumeClaim:
+            claimName: {{ include "actinia.fullname" . }}-grassdb
+        - name: userdata
+          persistentVolumeClaim:
+            claimName: {{ include "actinia.fullname" . }}-userdata
+        - name: resources
+          persistentVolumeClaim:
+            claimName: {{ include "actinia.fullname" . }}-resources
+        - name: geodata
+          persistentVolumeClaim:
+            claimName: {{ .Values.storage.geodata }}
+        {{- else }}
+        - name: grassdb
+          emptyDir: {}
+        - name: userdata
+          emptyDir: {}
+        - name: resources
+          emptyDir: {}
+        - name: geodata
+          emptyDir: {}
+        - name: grass-tmp-database
+          emptyDir: {}
+        {{- end }}        
+        - name: pctemplates
+          configMap:
+            name: {{ include "actinia.fullname" . }}-pc-templates
+        - name: startup
+          configMap:
+            name: {{ include "actinia.fullname" . }}
+            items:
+              - key: start.sh
+                path: start.sh
+              - key: pot_suitable_areas.colors
+                path: grass/pot_suitable_areas.colors
+              - key: pot_suitable_areas.cat
+                path: grass/pot_suitable_areas.cat
+        - name: config
+          configMap:
+            name: {{ include "actinia.fullname" . }}
+            items:
+              - key: actinia-core-config
+                path: actinia.cfg
+        - name: secret
+          secret:
+            secretName: {{ include "actinia.fullname" . }}
+            items:
+              - key: GCS_credentials
+                path: GCS_credentials.json
+              - key: WV_credentials
+                path: WV_credentials.json
+              - key: .pgpass
+                path: .pgpass
+              - key: .grass7
+                path: .grass7
+              - key: .sentinel2
+                path: .sentinel2
+              - key: .sentinel1_asf
+                path: .sentinel1_asf
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}  
+  {{- if .Values.persistence.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        name: grass-tmp-database
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: {{ .Values.grassTmpDatabase.size }}
+    {{- end }}
