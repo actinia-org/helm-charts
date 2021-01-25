@@ -69,7 +69,23 @@ affinity: {}
 
 persistence:
   enabled: false
-
+  grassdb:
+# TODO: make choosing different storage class possible
+#    storageClass: default
+    storageSize: 10Gi
+  userdata:
+# TODO: make choosing different storage class possible
+#    storageClass: default
+    storageSize: 10Gi
+  resources:
+# TODO: make choosing different storage class possible
+#    storageClass: default
+    storageSize: 10Gi
+  geodata:
+# TODO: make choosing different storage class possible
+#    storageClass: default
+    storageSize: 10Gi
+    
 grassTmpDatabase:
   size: 50Gi
 
@@ -84,6 +100,7 @@ config:
     host: actinia-redis-headless
     password: password
     port: 6379
+
 
 
 redis:

@@ -112,7 +112,7 @@ spec:
             claimName: {{ include "actinia.fullname" . }}-resources
         - name: geodata
           persistentVolumeClaim:
-            claimName: {{ .Values.storage.geodata }}
+            claimName: {{ include "actinia.fullname" . }}-geodata
         {{- else }}
         - name: grassdb
           emptyDir: {}

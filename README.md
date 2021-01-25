@@ -3,6 +3,7 @@
 ## mundialis helm repo
 
     helm repo add mundialis https://mundialis.github.io/helm-charts/
+    helm repo update
     helm search repo mundialis -l
 
 ## commit changes to chart
@@ -20,8 +21,11 @@
 
 ### prerequisites
     helm repo add mundialis https://mundialis.github.io/helm-charts/
+    helm repo update
 
 ### install actinia with default values
-    helm install mundialis/actinia
+    helm upgrade --install actinia mundialis/actinia
 
 ### install actinia with persistence
+    helm upgrade --install actinia mundialis/actinia --set "persistence.enabled=true"
+
