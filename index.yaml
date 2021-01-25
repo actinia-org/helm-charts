@@ -3,12 +3,16 @@ entries:
   actinia:
   - apiVersion: v2
     appVersion: 0.99.18
-    created: "2021-01-25T12:18:50.745721679+01:00"
+    created: "2021-01-25T12:51:46.661289836+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
     description: A Helm chart for actinia
-    digest: 132b000064f0561dc414e611dc027f33b70d6460c81db6d0e756c7f1a9ea7ca2
+    digest: eb3393758151ca2d20871baac8f23723002f1f1e71a1ff32dfbbb87ce5da8a41
     name: actinia
     type: application
     urls:
     - https://mundialis.github.io/helm-charts/actinia-0.0.2.tgz
     version: 0.0.2
-generated: "2021-01-25T12:18:50.7452569+01:00"
+generated: "2021-01-25T12:51:46.655807127+01:00"
