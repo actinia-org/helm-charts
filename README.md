@@ -29,3 +29,5 @@
 ### install actinia with persistence
     helm upgrade --install actinia mundialis/actinia --set "persistence.enabled=true"
 
+### install actinia with ingress enabled
+    helm upgrade --install actinia mundialis/actinia --set "ingress.enabled=true"
