@@ -16,6 +16,12 @@
   echo http://$SERVICE_IP:{{ .Values.service.port }}
 {{- else if contains "ClusterIP" .Values.service.type }}
   export POD_NAME=$(kubectl get pods --namespace {{ .Release.Namespace }} -l "app.kubernetes.io/name={{ include "actinia.name" . }},app.kubernetes.io/instance={{ .Release.Name }}" -o jsonpath="{.items[0].metadata.name}")
-  echo "Visit http://127.0.0.1:8088 to use your application"
+  echo "Visit http://127.0.0.1:8088/api/v1/version to get started"
   kubectl --namespace {{ .Release.Namespace }} port-forward $POD_NAME 8088:8088
 {{- end }}
+
+2. After checking that actinia is running at http://127.0.0.1:8088/api/v1/version,
+  have a look at all mapsets in nc_spm_08 demo location at http://127.0.0.1:8088/api/v1/locations/nc_spm_08/mapsets
+  and render a map: http://127.0.0.1:8088/api/v1/locations/nc_spm_08/mapsets/PERMANENT/raster_layers/soils/render
+
+3. To dive deeper into actinia, take a look at the api docs or take a turorial at https://actinia.mundialis.de
