@@ -29,7 +29,7 @@
     helm upgrade --install actinia mundialis/actinia
 
 ### install actinia with persistence
-    helm upgrade --install actinia mundialis/actinia --set "persistence.enabled=true"
+    helm upgrade --install actinia mundialis/actinia --set "persistence.enabled=true" --set "redis.master.persistence.enabled=true"
 
 ### install actinia with ingress enabled
     helm upgrade --install actinia mundialis/actinia --set "ingress.enabled=true"

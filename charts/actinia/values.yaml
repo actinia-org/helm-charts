@@ -71,27 +71,21 @@ persistence:
   enabled: false
 # TODO add option to add 'useExistingClaim'
   grassdb:
-# TODO: make choosing different storage class possible
-#    storageClass: default
+    storageClassName: default
     storageSize: 10Gi
   userdata:
-# TODO: make choosing different storage class possible
-#    storageClass: default
+    storageClassName: default
     storageSize: 10Gi
   resources:
-# TODO: make choosing different storage class possible
-#    storageClass: default
+    storageClassName: default
     storageSize: 10Gi
   geodata:
-# TODO: make choosing different storage class possible
-#    storageClass: default
+    storageClassName: default
     storageSize: 10Gi
     
 grassTmpDatabase:
-  size: 50Gi
-
-storage:
-  geodata: dev-geoserver-geodata
+  storageClassName: default
+  storageSize: 50Gi
 
 config:
   actinia:
@@ -104,5 +98,11 @@ config:
 
 # TODO: use redis password secret in actinia
 # export REDIS_PASSWORD=$(kubectl get secret --namespace default my-release-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
+# https://github.com/bitnami/charts/tree/master/bitnami/redis
 redis:
   password: password
+  cluster:
+    enabled: false
+  master:
+    persistence:
+      enabled: false

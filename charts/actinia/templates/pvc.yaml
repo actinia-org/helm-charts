@@ -7,6 +7,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  {{- if not ( eq .Values.persistence.grassdb.storageClassName "default" ) }}
+  storageClassName: {{ .Values.persistence.grassdb.storageClassName }}
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.persistence.grassdb.storageSize }}
@@ -18,6 +21,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  {{- if not ( eq .Values.persistence.userdata.storageClassName "default" ) }}
+  storageClassName: {{ .Values.persistence.userdata.storageClassName }}
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.persistence.userdata.storageSize }}
@@ -29,6 +35,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  {{- if not ( eq .Values.persistence.resources.storageClassName "default" ) }}
+  storageClassName: {{ .Values.persistence.resources.storageClassName }}
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.persistence.resources.storageSize }}
@@ -40,6 +49,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
+  {{- if not ( eq .Values.persistence.geodata.storageClassName "default" ) }}
+  storageClassName: {{ .Values.persistence.geodata.storageClassName }}
+  {{- end }}
   resources:
     requests:
       storage: {{ .Values.persistence.geodata.storageSize }}

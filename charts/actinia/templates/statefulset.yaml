@@ -124,7 +124,7 @@ spec:
           emptyDir: {}
         - name: grass-tmp-database
           emptyDir: {}
-        {{- end }}        
+        {{- end }}
         - name: pctemplates
           configMap:
             name: {{ include "actinia.fullname" . }}-pc-templates
@@ -179,7 +179,10 @@ spec:
       spec:
         accessModes:
           - ReadWriteOnce
+        {{- if not ( eq .Values.grassTmpDatabase.storageClassName "default" ) }}
+        storageClassName: {{ .Values.grassTmpDatabase.storageClassName }}
+        {{- end }}
         resources:
           requests:
-            storage: {{ .Values.grassTmpDatabase.size }}
+            storage: {{ .Values.grassTmpDatabase.storageSize }}
     {{- end }}
