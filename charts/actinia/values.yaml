@@ -69,6 +69,7 @@ affinity: {}
 
 persistence:
   enabled: false
+# TODO add option to add 'useExistingClaim'
   grassdb:
 # TODO: make choosing different storage class possible
 #    storageClass: default
@@ -101,9 +102,7 @@ config:
     password: password
     port: 6379
 
-
-
+# TODO: use redis password secret in actinia
+# export REDIS_PASSWORD=$(kubectl get secret --namespace default my-release-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 redis:
   password: password
-
-# export REDIS_PASSWORD=$(kubectl get secret --namespace default my-release-redis -o jsonpath="{.data.redis-password}" | base64 --decode)

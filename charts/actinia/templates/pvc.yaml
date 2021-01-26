@@ -6,7 +6,7 @@ metadata:
   name: {{ include "actinia.fullname" . }}-grassdb
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.persistence.grassdb.storageSize }}
@@ -17,7 +17,7 @@ metadata:
   name: {{ include "actinia.fullname" . }}-userdata
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.persistence.userdata.storageSize }}
@@ -28,7 +28,7 @@ metadata:
   name: {{ include "actinia.fullname" . }}-resources
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.persistence.resources.storageSize }}
@@ -39,7 +39,7 @@ metadata:
   name: {{ include "actinia.fullname" . }}-geodata
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: {{ .Values.persistence.geodata.storageSize }}
