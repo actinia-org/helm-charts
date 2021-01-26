@@ -17,7 +17,7 @@
     helm repo index --url https://mundialis.github.io/helm-charts/ .
 
     git add . && git commit -m "pages commit"
-    git push origin main
+    git push origin helm-repo
 
 ## examples
 
