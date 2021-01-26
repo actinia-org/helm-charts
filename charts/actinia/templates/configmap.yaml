@@ -27,18 +27,9 @@ data:
     mkdir -p /tmp/:/root/.grass7
     cp /root/.grass7/dblogin /tmp/:/root/.grass7/
 
-    cp /mnt/pgpass/GCS_credentials.json /etc/GCS_credentials.json
-
     # Create default location in mounted (!) directory
-    [ ! -d "/actinia_core/grassdb/utm49s_wgs84" ] && grass -text -e -c 'EPSG:32749' /actinia_core/grassdb/utm49s_wgs84
-    [ ! -d "/actinia_core/userdata/superadmin/utm49s_wgs84" ] && grass -text -e -c 'EPSG:32749' /actinia_core/userdata/superadmin/utm49s_wgs84
-    [ ! -d "/actinia_core/grassdb/utm32n_wgs84" ] && grass -text -e -c 'EPSG:32632' /actinia_core/grassdb/utm32n_wgs84
-    [ ! -d "/actinia_core/userdata/superadmin/utm32n_wgs84" ] && grass -text -e -c 'EPSG:32632' /actinia_core/userdata/superadmin/utm32n_wgs84
-    # TODO: use this location for tests and integrate sample data, see README
-    # created here, because set in sample config as default location
     [ ! -d "/actinia_core/grassdb/nc_spm_08" ] && grass -text -e -c 'EPSG:3358' /actinia_core/grassdb/nc_spm_08
 
-    # TODO: make sensefull
     actinia-user create -u actinia-gdi -w actinia-gdi -r superadmin -g superadmin -c 100000000000 -n 1000 -t 31536000
     actinia-user update -u actinia-gdi -w {{ .Values.config.actinia.password }}
     status=$?
@@ -46,8 +37,6 @@ data:
       echo "Failed to start actinia-user: $status"
       exit $status
     fi
-
-    (cd /src/actinia-gdi && python3 setup.py install)
 
     gunicorn -b 0.0.0.0:8088 -w {{ .Values.config.actinia.workercount }} --access-logfile=- -k gthread actinia_core.main:flask_app
     status=$?
@@ -58,109 +47,64 @@ data:
 
   actinia-core-config: |
     [GRASS]
-    grass_gis_start_script = /usr/local/bin/grass
     grass_database = /actinia_core/grassdb
     grass_user_database = /actinia_core/userdata
     grass_tmp_database = /actinia_core/workspace/temp_db
     grass_resource_dir = /actinia_core/resources
-    grass_addon_path = /root/.grass7/addons/
     grass_gis_base = /usr/local/grass7
-    grass_modules_xml_path = /usr/local/grass7/gui/wxpython/xml/module_items.xml
-    grass_default_location = nc_spm_08
+    grass_gis_start_script = /usr/local/bin/grass
+    grass_addon_path = /root/.grass7/addons/
 
     [API]
     plugins = ["actinia_gdi"]
-    force_https_urls = False
-
-    [LIMITS]
-    max_cell_limit = 2000000
-    process_time_limt = 60
-    process_num_limit = 20
-    number_of_workers = 3
+    force_https_urls = True
 
     [REDIS]
     {{- if .Values.config.redis.host }}
     redis_server_url = {{ .Values.config.redis.host }}
-    redis_queue_server_url = {{ .Values.config.redis.host }}
     {{- else }}
     redis_server_url = {{ include "actinia.fullname" . }}-redis-headless
-    redis_queue_server_url = {{ include "actinia.fullname" . }}-redis-headless
     {{- end }}
     redis_server_port = {{ .Values.config.redis.port }}
     redis_server_pw = {{ .Values.config.redis.password }}
-    redis_queue_server_port = {{ .Values.config.redis.port }}
-    worker_queue_name = actinia_job
+    redis_resource_expire_time = 864000
     worker_logfile = /actinia_core/workspace/tmp/actinia_worker.log
 
     [LOGGING]
-    log_interface = stdout
     log_stdout_format = json
-    log_file_format = colored
-    log_stderr_format = plain
-    log_fluent_host = fluentd
-    log_fluent_port = 24224
-    log_level = 3
+    log_level = 1
 
     [MISC]
     tmp_workdir = /actinia_core/workspace/tmp
     download_cache = /actinia_core/workspace/download_cache
     secret_key = token_signing_key_changeme
 
-    [MANAGEMENT]
-    default_user = user
-    default_user_group = group
-
-  pot_suitable_areas.colors: |
-    0 red
-    1 orange
-    2 yellow
-    3 green
-
-  pot_suitable_areas.cat: |
-    0:not suitable for restoration
-    1:low suitability for restoration
-    2:medium suitability for restoration
-    3:high suitability for restoration
-
   init-data.sh: |-
     #!/bin/bash
-    apt-get update -qq
-    apt-get install -y -qq wget
-    echo "check if userdata initialized"
-    FILE=/actinia_core/userdata/.init
-    if [ -f "$FILE" ]; then
-      echo "download geoserver_data already initialized"
-    else
-      echo "download userdata"
-      CMD="wget -q -O /mnt/download/userdata.tgz 'https://files.mundialis.de/download.php?id=341&token=32Xhsmk6SfQFqtx8RgsTJKGBeLKSJsrD&download'"
-      echo $CMD
-      eval $CMD
-      CMD="cd /actinia_core/userdata"
-      echo $CMD
-      eval $CMD
-      CMD="tar -zxf /mnt/download/userdata.tgz --strip 1 --keep-old-files"
-      echo $CMD
-      eval $CMD
-      CMD="touch $FILE"
-      echo $CMD
-      eval $CMD
-    fi
-    echo "check if grassdb initialized"
+    apk add curl
+    echo "check if sampledata exists"
     FILE=/actinia_core/grassdb/.init
     if [ -f "$FILE" ]; then
-      echo "download grassdb already initialized"
-    else
-      echo "download grassdb"
-      CMD="wget -q -O /mnt/download/grassdb.tgz 'https://files.mundialis.de/download.php?id=340&token=45konAzdOF4TWlM2RySucCsW2DeiO8RI&download'"
-      echo $CMD
-      eval $CMD
-      CMD="cd /actinia_core/grassdb"
-      echo $CMD
-      eval $CMD
-      CMD="tar -zxf /mnt/download/grassdb.tgz --strip 1 --keep-old-files"
-      echo $CMD
-      eval $CMD
-      CMD="touch $FILE"
-      echo $CMD
-      eval $CMD
+        echo "sampledata already exists"
+        exit 0
     fi
+
+    mkdir -p /actinia_core/grassdb
+    cd /actinia_core/grassdb
+
+    echo "download basic sampledata"
+    DOWNLOAD=nc_basic_spm_grass7.tar.gz
+    curl --continue - -O https://grass.osgeo.org/sampledata/north_carolina/${DOWNLOAD}
+    tar -zxf ${DOWNLOAD} && rm ${DOWNLOAD}
+    mv nc_basic_spm_grass7 nc_spm_08
+
+    echo "download temporal sampledata"
+    DOWNLOAD=nc_spm_mapset_modis2015_2016_lst.zip
+    curl --continue - -O https://grass.osgeo.org/sampledata/north_carolina/${DOWNLOAD}
+    unzip ${DOWNLOAD} && rm ${DOWNLOAD}
+    mv modis_lst /actinia_core/grassdb/nc_spm_08/modis_lst
+
+    CMD="touch $FILE"
+    echo $CMD && eval $CMD
+
+    # chown -R 1001:1001 /actinia_core/grassdb/nc_spm_08/modis_lst && chmod -R g+w /actinia_core/grassdb/nc_spm_08/modis_lst
