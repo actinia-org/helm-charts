@@ -36,11 +36,6 @@ spec:
               {{- if .Values.persistence.grassdb.subPath }}
               subPath: {{ .Values.persistence.grassdb.subPath }}
               {{- end }}
-            - name: userdata
-              mountPath: /actinia_core/userdata/
-              {{- if .Values.persistence.userdata.subPath }}
-              subPath: {{ .Values.persistence.userdata.subPath }}
-              {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -94,22 +89,12 @@ spec:
               {{- if .Values.persistence.geodata.subPath }}
               subPath: {{ .Values.persistence.geodata.subPath }}
               {{- end }}
-            - name: grass-tmp-database
+            - name: actinia-worker-workspace
               mountPath: /actinia_core/workspace/
               #subPath: /
           env:
             - name: DEFAULT_CONFIG_PATH
               value: /etc/default/actinia-config/actinia.cfg
-            - name: UP42_PROJECT_ID
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "actinia.fullname" . }}
-                  key: UP42_PROJECT_ID
-            - name: UP42_PROJECT_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "actinia.fullname" . }}
-                  key: UP42_PROJECT_API_KEY
       volumes:
         - name: temp
           emptyDir: {}
@@ -157,22 +142,15 @@ spec:
           emptyDir: {}
         - name: geodata
           emptyDir: {}
-        - name: grass-tmp-database
+        - name: actinia-worker-workspace
           emptyDir: {}
         {{- end }}
-        - name: pctemplates
-          configMap:
-            name: {{ include "actinia.fullname" . }}-pc-templates
         - name: startup
           configMap:
             name: {{ include "actinia.fullname" . }}
             items:
               - key: start.sh
                 path: start.sh
-              - key: pot_suitable_areas.colors
-                path: grass/pot_suitable_areas.colors
-              - key: pot_suitable_areas.cat
-                path: grass/pot_suitable_areas.cat
         - name: config
           configMap:
             name: {{ include "actinia.fullname" . }}
@@ -183,18 +161,10 @@ spec:
           secret:
             secretName: {{ include "actinia.fullname" . }}
             items:
-              - key: GCS_credentials
-                path: GCS_credentials.json
-              - key: WV_credentials
-                path: WV_credentials.json
               - key: .pgpass
                 path: .pgpass
               - key: .grass7
                 path: .grass7
-              - key: .sentinel2
-                path: .sentinel2
-              - key: .sentinel1_asf
-                path: .sentinel1_asf
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -206,18 +176,18 @@ spec:
     {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
-    {{- end }}  
+    {{- end }}
   {{- if .Values.persistence.enabled }}
   volumeClaimTemplates:
     - metadata:
-        name: grass-tmp-database
+        name: actinia-worker-workspace
       spec:
         accessModes:
           - ReadWriteOnce
-        {{- if not ( eq .Values.grassTmpDatabase.storageClassName "default" ) }}
-        storageClassName: {{ .Values.grassTmpDatabase.storageClassName }}
+        {{- if not ( eq .Values.actiniaWorkerWorkspace.storageClassName "default" ) }}
+        storageClassName: {{ .Values.actiniaWorkerWorkspace.storageClassName }}
         {{- end }}
         resources:
           requests:
-            storage: {{ .Values.grassTmpDatabase.storageSize }}
+            storage: {{ .Values.actiniaWorkerWorkspace.storageSize }}
     {{- end }}
