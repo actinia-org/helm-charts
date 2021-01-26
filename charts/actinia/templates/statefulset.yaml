@@ -33,8 +33,14 @@ spec:
               mountPath: /mnt/
             - name: grassdb
               mountPath: /actinia_core/grassdb/
+              {{- if .Values.persistence.grassdb.subPath }}
+              subPath: {{ .Values.persistence.grassdb.subPath }}
+              {{- end }}
             - name: userdata
               mountPath: /actinia_core/userdata/
+              {{- if .Values.persistence.userdata.subPath }}
+              subPath: {{ .Values.persistence.userdata.subPath }}
+              {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -70,14 +76,27 @@ spec:
               mountPath: /mnt/pgpass/
             - name: grassdb
               mountPath: /actinia_core/grassdb/
+              {{- if .Values.persistence.grassdb.subPath }}
+              subPath: {{ .Values.persistence.grassdb.subPath }}
+              {{- end }}
             - name: userdata
               mountPath: /actinia_core/userdata/
+              {{- if .Values.persistence.userdata.subPath }}
+              subPath: {{ .Values.persistence.userdata.subPath }}
+              {{- end }}
             - name: resources
               mountPath: /actinia_core/resources/
+              {{- if .Values.persistence.resources.subPath }}
+              subPath: {{ .Values.persistence.resources.subPath }}
+              {{- end }}
             - name: geodata
               mountPath: /mnt/geodata/
+              {{- if .Values.persistence.geodata.subPath }}
+              subPath: {{ .Values.persistence.geodata.subPath }}
+              {{- end }}
             - name: grass-tmp-database
               mountPath: /actinia_core/workspace/
+              #subPath: /
           env:
             - name: DEFAULT_CONFIG_PATH
               value: /etc/default/actinia-config/actinia.cfg
@@ -103,16 +122,32 @@ spec:
         {{- if .Values.persistence.enabled }}
         - name: grassdb
           persistentVolumeClaim:
+            {{- if .Values.persistence.grassdb.useExistingClaim }}
+            claimName: {{ .Values.persistence.grassdb.claimName }}
+            {{- else }}
             claimName: {{ include "actinia.fullname" . }}-grassdb
+            {{- end }}
         - name: userdata
           persistentVolumeClaim:
+            {{- if .Values.persistence.userdata.useExistingClaim }}
+            claimName: {{ .Values.persistence.userdata.claimName }}
+            {{- else }}
             claimName: {{ include "actinia.fullname" . }}-userdata
+            {{- end }}
         - name: resources
           persistentVolumeClaim:
+            {{- if .Values.persistence.resources.useExistingClaim }}
+            claimName: {{ .Values.persistence.resources.claimName }}
+            {{- else }}
             claimName: {{ include "actinia.fullname" . }}-resources
+            {{- end }}
         - name: geodata
           persistentVolumeClaim:
+            {{- if .Values.persistence.geodata.useExistingClaim }}
+            claimName: {{ .Values.persistence.geodata.claimName }}
+            {{- else }}
             claimName: {{ include "actinia.fullname" . }}-geodata
+            {{- end }}
         {{- else }}
         - name: grassdb
           emptyDir: {}

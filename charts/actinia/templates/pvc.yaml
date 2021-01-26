@@ -1,4 +1,5 @@
 {{- if .Values.persistence.enabled }}
+{{- if not .Values.persistence.grassdb.useExistingClaim }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -13,6 +14,8 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.grassdb.storageSize }}
+{{- end }}
+{{- if not .Values.persistence.userdata.useExistingClaim }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -27,6 +30,8 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.userdata.storageSize }}
+{{- end }}
+{{- if not .Values.persistence.resources.useExistingClaim }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -41,6 +46,8 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.resources.storageSize }}
+{{- end }}
+{{- if not .Values.persistence.geodata.useExistingClaim }}
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -55,4 +62,5 @@ spec:
   resources:
     requests:
       storage: {{ .Values.persistence.geodata.storageSize }}
+{{- end }}
 {{- end }}
