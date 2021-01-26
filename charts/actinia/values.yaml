@@ -67,19 +67,39 @@ tolerations: []
 
 affinity: {}
 
+# TODO add option to add 'useExistingClaim'
 persistence:
   enabled: false
-# TODO add option to add 'useExistingClaim'
   grassdb:
+    # useExistingClaim
+    # if set to true you have to set claimName as well
+    useExistingClaim: false
+    # claimName: grassdb-claim
+    # subPath: grassdb-subpath
     storageClassName: default
     storageSize: 10Gi
   userdata:
+    # useExistingClaim
+    # if set to true you have to set claimName as well
+    useExistingClaim: false
+    # claimName: userdata-claim
+    # subPath: userdata-subpath
     storageClassName: default
     storageSize: 10Gi
   resources:
+    # useExistingClaim
+    # if set to true you have to set claimName as well
+    useExistingClaim: false
+    # claimName: resources-claim
+    # subPath: resources-subpath
     storageClassName: default
     storageSize: 10Gi
   geodata:
+    # useExistingClaim
+    # if set to true you have to set claimName as well
+    useExistingClaim: false
+    # claimName: geodata-claim
+    # subPath: geodata-subpath
     storageClassName: default
     storageSize: 10Gi
     
@@ -92,7 +112,7 @@ config:
     workercount: 1
     password: actinia-gdi
   redis:
-    host: actinia-redis-headless
+    #host: actinia-redis-headless
     password: password
     port: 6379
 

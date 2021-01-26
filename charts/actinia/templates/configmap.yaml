@@ -79,10 +79,15 @@ data:
     number_of_workers = 3
 
     [REDIS]
-    redis_server_url =  {{ .Values.config.redis.host }}
+    {{- if .Values.config.redis.host }}
+    redis_server_url = {{ .Values.config.redis.host }}
+    redis_queue_server_url = {{ .Values.config.redis.host }}
+    {{- else }}
+    redis_server_url = {{ include "actinia.fullname" . }}-redis-headless
+    redis_queue_server_url = {{ include "actinia.fullname" . }}-redis-headless
+    {{- end }}
     redis_server_port = {{ .Values.config.redis.port }}
     redis_server_pw = {{ .Values.config.redis.password }}
-    redis_queue_server_url = {{ .Values.config.redis.host }}
     redis_queue_server_port = {{ .Values.config.redis.port }}
     worker_queue_name = actinia_job
     worker_logfile = /actinia_core/workspace/tmp/actinia_worker.log
