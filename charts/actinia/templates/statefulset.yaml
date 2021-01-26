@@ -24,7 +24,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: download-data
-          image: ubuntu
+          image: alpine:3.13
           command: ["/bin/sh","/mnt/init-data.sh"]
           volumeMounts:
             - name: temp

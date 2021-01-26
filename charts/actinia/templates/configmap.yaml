@@ -81,34 +81,30 @@ data:
 
   init-data.sh: |-
     #!/bin/bash
-    apt-get update -qq
-    apt-get install -y -qq wget
+    apk add curl
     echo "check if sampledata exists"
     FILE=/actinia_core/grassdb/.init
     if [ -f "$FILE" ]; then
-      echo "sampledata already exists"
-    else
-      echo "download basic sampledata"
-      CMD="wget -q -O /mnt/download/nc_basic_spm_grass7.tar.gz 'https://grass.osgeo.org/sampledata/north_carolina/nc_basic_spm_grass7.tar.gz'"
-      echo $CMD
-      eval $CMD
-      CMD="cd /actinia_core/grassdb"
-      echo $CMD
-      eval $CMD
-      CMD="tar -zxf /mnt/download/nc_basic_spm_grass7.tar.gz --strip 1 --keep-old-files"
-      echo $CMD
-      eval $CMD
-      echo "download temporal sampledata"
-      CMD="wget -q -O nc_spm_mapset_modis2015_2016_lst.zip 'https://grass.osgeo.org/sampledata/north_carolina/nc_spm_mapset_modis2015_2016_lst.zip'"
-      echo $CMD
-      eval $CMD
-      CMD="cd /actinia_core/grassdb"
-      echo $CMD
-      eval $CMD
-      CMD="unzip nc_spm_mapset_modis2015_2016_lst.zip"
-      echo $CMD
-      eval $CMD
-      CMD="touch $FILE"
-      echo $CMD
-      eval $CMD
+        echo "sampledata already exists"
+        exit 0
     fi
+
+    mkdir -p /actinia_core/grassdb
+    cd /actinia_core/grassdb
+
+    echo "download basic sampledata"
+    DOWNLOAD=nc_basic_spm_grass7.tar.gz
+    curl --continue - -O https://grass.osgeo.org/sampledata/north_carolina/${DOWNLOAD}
+    tar -zxf ${DOWNLOAD} && rm ${DOWNLOAD}
+    mv nc_basic_spm_grass7 nc_spm_08
+
+    echo "download temporal sampledata"
+    DOWNLOAD=nc_spm_mapset_modis2015_2016_lst.zip
+    curl --continue - -O https://grass.osgeo.org/sampledata/north_carolina/${DOWNLOAD}
+    unzip ${DOWNLOAD} && rm ${DOWNLOAD}
+    mv modis_lst /actinia_core/grassdb/nc_spm_08/modis_lst
+
+    CMD="touch $FILE"
+    echo $CMD && eval $CMD
+
+    # chown -R 1001:1001 /actinia_core/grassdb/nc_spm_08/modis_lst && chmod -R g+w /actinia_core/grassdb/nc_spm_08/modis_lst
