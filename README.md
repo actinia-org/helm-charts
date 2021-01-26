@@ -8,10 +8,12 @@
 
 ## commit changes to chart
 
-    # TODO: fix subcharts conflicts with lint
-    helm lint charts/*
-    helm dependency update charts/*
-    helm package charts/*
+    helm lint charts/*   
+    helm package -u charts/*
+
+    # change branch to helm-repo
+    # (move helm packages to helm-repo)
+
     helm repo index --url https://mundialis.github.io/helm-charts/ .
 
     git add . && git commit -m "pages commit"
