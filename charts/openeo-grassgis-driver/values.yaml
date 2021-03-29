@@ -62,3 +62,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+proxy:
+  image:
+    repository: nginx
+    version: 1.19
+    pullPolicy: IfNotPresent
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
