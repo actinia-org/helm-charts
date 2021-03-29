@@ -63,7 +63,9 @@ tolerations: []
 
 affinity: {}
 
+# Default values for openeo-grassgis-driver nginx proxy.
 proxy:
+  replicaCount: 1
   image:
     repository: nginx
     version: 1.19

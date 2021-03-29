@@ -51,6 +51,11 @@ app.kubernetes.io/name: {{ include "openeo-grassgis-driver.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
+{{- define "openeo-grassgis-driver.selectorLabels-proxy" -}}
+app.kubernetes.io/name: {{ include "openeo-grassgis-driver.name" . }}-proxy
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end -}}
+
 {{/*
 Create the name of the service account to use
 */}}

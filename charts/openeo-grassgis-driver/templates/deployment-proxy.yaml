@@ -5,14 +5,14 @@ metadata:
   labels:
     {{- include "openeo-grassgis-driver.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.proxy.replicaCount }}
   selector:
     matchLabels:
-      {{- include "openeo-grassgis-driver.selectorLabels" . | nindent 6 }}
+      {{- include "openeo-grassgis-driver.selectorLabels-proxy" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "openeo-grassgis-driver.selectorLabels" . | nindent 8 }}
+        {{- include "openeo-grassgis-driver.selectorLabels-proxy" . | nindent 8 }}
     spec:
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -41,6 +41,22 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.proxy.resources | nindent 12 }}
+          volumeMounts:
+            - name: cache
+              mountPath: /data/nginx/cache
+            - name: nginx-conf
+              mountPath: /etc/nginx/conf.d/
+      volumes:
+        - name: cache
+          emptyDir: {}
+        - name: nginx-conf
+          configMap:
+            name: {{ include "openeo-grassgis-driver.fullname" . }}-proxy
+            items:
+              - key: cache.conf
+                path: cache.conf
+              - key: default.conf
+                path: default.conf
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
