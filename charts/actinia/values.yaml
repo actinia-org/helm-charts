@@ -76,6 +76,7 @@ persistence:
     useExistingClaim: false
     # claimName: grassdb-claim
     # subPath: grassdb-subpath
+    accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   userdata:
@@ -84,6 +85,7 @@ persistence:
     useExistingClaim: false
     # claimName: userdata-claim
     # subPath: userdata-subpath
+    accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   resources:
@@ -92,6 +94,7 @@ persistence:
     useExistingClaim: false
     # claimName: resources-claim
     # subPath: resources-subpath
+    accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   geodata:
@@ -100,12 +103,14 @@ persistence:
     useExistingClaim: false
     # claimName: geodata-claim
     # subPath: geodata-subpath
+    accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
 
-actiniaWorkerWorkspace:
-  storageClassName: default
-  storageSize: 50Gi
+  actiniaWorkerWorkspace:
+    accessMode: ReadWriteOnce
+    storageClassName: default
+    storageSize: 50Gi
 
 config:
   actinia:

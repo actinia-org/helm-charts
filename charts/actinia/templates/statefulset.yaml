@@ -183,11 +183,11 @@ spec:
         name: actinia-worker-workspace
       spec:
         accessModes:
-          - ReadWriteOnce
-        {{- if not ( eq .Values.actiniaWorkerWorkspace.storageClassName "default" ) }}
-        storageClassName: {{ .Values.actiniaWorkerWorkspace.storageClassName }}
+          - {{ .Values.persistence.actiniaWorkerWorkspace.accessMode }}
+        {{- if not ( eq .Values.persistence.actiniaWorkerWorkspace.storageClassName "default" ) }}
+        storageClassName: {{ .Values.persistence.actiniaWorkerWorkspace.storageClassName }}
         {{- end }}
         resources:
           requests:
-            storage: {{ .Values.actiniaWorkerWorkspace.storageSize }}
+            storage: {{ .Values.persistence.actiniaWorkerWorkspace.storageSize }}
     {{- end }}
