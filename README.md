@@ -8,7 +8,7 @@
 
 ## commit changes to chart
 
-    helm lint charts/*   
+    helm lint charts/*
     helm package -u charts/*
 
     # change branch to helm-repo
@@ -33,3 +33,14 @@
 
 ### install actinia with ingress enabled
     helm upgrade --install actinia mundialis/actinia --set "ingress.enabled=true"
+
+
+# Local testing
+
+For local testing you need a running installation of minikube.
+Make you local changes and then run e.g.
+
+    mydeploymentname=openeo-grassgis-driver
+    mychart=openeo-grassgis-driver
+
+    helm upgrade $mydeploymentname --install ./$mychart -f ./$mychart/values.yaml
