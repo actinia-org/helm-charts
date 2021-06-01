@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "openeo-grassgis-driver.fullname" . }}
+  labels:
+{{ include "openeo-grassgis-driver.labels" . | indent 4 }}
+data:
+  config: |
+    [ACTINIA]
+    {{- if .Values.config.actinia_host }}
+    HOST = {{ .Values.config.actinia_host }}
+    {{- end }}
+    {{- if .Values.config.actinia_user }}
+    USER = {{ .Values.config.actinia_user }}
+    {{- end }}
+    {{- if .Values.config.actinia_password }}
+    PASSWORD = {{ .Values.config.actinia_password }}
+    {{- end }}

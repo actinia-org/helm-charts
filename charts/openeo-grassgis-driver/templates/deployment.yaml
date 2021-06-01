@@ -35,12 +35,32 @@ spec:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 120
+            timeoutSeconds: 120
           readinessProbe:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 120
+            timeoutSeconds: 120
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          command: ["gunicorn", "-b", "0.0.0.0:5000", "-t", "60", "openeo_grass_gis_driver.main:flask_app"]
+          # args: ['/src/start/start.sh']
+          volumeMounts:
+            - name: config
+              mountPath: /etc/default/openeo-grassgis-driver
+          env:
+            - name: DEFAULT_CONFIG_PATH
+              value: /etc/default/openeo-grassgis-driver
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "openeo-grassgis-driver.fullname" . }}
+            items:
+              - key: config
+                path: config.ini
+
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

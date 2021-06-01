@@ -8,6 +8,13 @@ image:
   repository: mundialis/openeo-grassgis-driver
   pullPolicy: IfNotPresent
 
+config:
+  # allows to overwrite actinia connection parameters
+  # if they differ from default config
+  actinia_host: https://actinia-dev.mundialis.de
+  # actinia_user: example_user
+  # actinia_password: example_password
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
