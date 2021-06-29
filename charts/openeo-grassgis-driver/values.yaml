@@ -14,7 +14,7 @@ config:
   actinia_host: https://actinia-dev.mundialis.de
   # actinia_user: example_user
   # actinia_password: example_password
-  # actinia_locations: ["nc_spm_08", "utm32n", "latlong_wgs84"]
+  # actinia_locations: "[\"nc_spm_08\", \"utm32n\", \"latlong_wgs84\"]"
 
 imagePullSecrets: []
 nameOverride: ""
