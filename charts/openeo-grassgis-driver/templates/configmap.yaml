@@ -16,3 +16,6 @@ data:
     {{- if .Values.config.actinia_password }}
     PASSWORD = {{ .Values.config.actinia_password }}
     {{- end }}
+    {{- if .Values.config.actinia_locations }}
+    LOCATIONS = {{ .Values.config.actinia_locations }}
+    {{- end }}
