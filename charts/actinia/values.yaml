@@ -70,43 +70,32 @@ affinity: {}
 # TODO add option to add 'useExistingClaim'
 persistence:
   enabled: false
+  # useExistingClaim
+  # if set to true you have to set claimName
+  # subpath needs to be set as well for each volume
+  useExistingClaim: false
+  #claimName: actinia-claim
   grassdb:
-    # useExistingClaim
-    # if set to true you have to set claimName as well
-    useExistingClaim: false
-    # claimName: grassdb-claim
-    # subPath: grassdb-subpath
+    #subPath: grassdb-subpath
     accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   userdata:
-    # useExistingClaim
-    # if set to true you have to set claimName as well
-    useExistingClaim: false
-    # claimName: userdata-claim
-    # subPath: userdata-subpath
+    #subPath: userdata-subpath
     accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   resources:
-    # useExistingClaim
-    # if set to true you have to set claimName as well
-    useExistingClaim: false
-    # claimName: resources-claim
-    # subPath: resources-subpath
+    #subPath: resources-subpath
     accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
   geodata:
-    # useExistingClaim
-    # if set to true you have to set claimName as well
-    useExistingClaim: false
-    # claimName: geodata-claim
-    # subPath: geodata-subpath
+    #subPath: geodata-subpath
     accessMode: ReadWriteMany
     storageClassName: default
     storageSize: 10Gi
-
+  # volume config for statefulset volumeclaimtemplates
   actiniaWorkerWorkspace:
     accessMode: ReadWriteOnce
     storageClassName: default
