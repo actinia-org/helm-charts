@@ -116,16 +116,14 @@ config:
   actinia:
     workercount: 1
     password: actinia-gdi
-  redis:
+  redis: {}
     #host: actinia-redis-headless
-    password: password
-    port: 6379
+    #port: 6379
+    #password: password
 
-# TODO: use redis password secret in actinia
-# export REDIS_PASSWORD=$(kubectl get secret --namespace default my-release-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
 # https://github.com/bitnami/charts/tree/master/bitnami/redis
 redis:
-  password: password
+  #password: password
   cluster:
     enabled: false
   master:

@@ -28,7 +28,7 @@ data:
     cp /root/.grass7/dblogin /tmp/:/root/.grass7/
 
     # Create default location in mounted (!) directory
-    [ ! -d "/actinia_core/grassdb/nc_spm_08" ] && grass -text -e -c 'EPSG:3358' /actinia_core/grassdb/nc_spm_08
+    [ ! -d "/actinia_core/grassdb/nc_spm_08" ] && grass --text -e -c 'EPSG:3358' /actinia_core/grassdb/nc_spm_08
 
     actinia-user create -u actinia-gdi -w actinia-gdi -r superadmin -g superadmin -c 100000000000 -n 1000 -t 31536000
     actinia-user update -u actinia-gdi -w {{ .Values.config.actinia.password }}
@@ -65,8 +65,11 @@ data:
     {{- else }}
     redis_server_url = {{ include "actinia.fullname" . }}-redis-headless
     {{- end }}
+    {{- if .Values.config.redis.port }}
     redis_server_port = {{ .Values.config.redis.port }}
-    redis_server_pw = {{ .Values.config.redis.password }}
+    {{- else }}
+    redis_server_port = 6379
+    {{- end }}
     redis_resource_expire_time = 864000
     worker_logfile = /actinia_core/workspace/tmp/actinia_worker.log
 

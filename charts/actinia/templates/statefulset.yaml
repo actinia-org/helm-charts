@@ -44,6 +44,18 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command: ['sh']
           args: ['/src/start/start.sh']
+          env:
+            - name: DEFAULT_CONFIG_PATH
+              value: /etc/default/actinia-config/actinia.cfg
+            - name: REDIS_SERVER_PW
+              {{- if .Values.config.redis.password }}
+              value: {{ .Values.config.redis.password }}
+              {{- else }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "actinia.fullname" . }}-redis
+                  key: redis-password
+              {{- end }}
           ports:
             - name: actinia-tcp
               containerPort: 8088
@@ -92,9 +104,6 @@ spec:
             - name: actinia-worker-workspace
               mountPath: /actinia_core/workspace/
               #subPath: /
-          env:
-            - name: DEFAULT_CONFIG_PATH
-              value: /etc/default/actinia-config/actinia.cfg
       volumes:
         - name: temp
           emptyDir: {}
