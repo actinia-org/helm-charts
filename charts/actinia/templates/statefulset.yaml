@@ -92,6 +92,7 @@ spec:
           {{- if .Values.persistence.customVolume.enabled }}
             - name: customvolume
               mountPath: {{ .Values.persistence.customVolume.mountPath }}
+              subPath: {{ .Values.persistence.customVolume.subPath }}
           {{- end }}
           {{- if .Values.persistence.useExistingClaim }}
             - name: existingclaim

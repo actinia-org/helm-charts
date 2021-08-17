@@ -70,8 +70,9 @@ affinity: {}
 persistence:
   customVolume:
     enabled: false
-    #mountPath: /custom/path
+    #mountPath: /custom/path/
     #claimName: customVolumeClaimName
+    #subPath: customVolumeSubPath
   enabled: false
   # useExistingClaim
   # if set to true you have to set claimName
