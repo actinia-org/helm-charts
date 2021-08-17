@@ -1,7 +1,0 @@
-persistence:
-  customVolume:
-    enabled: true
-    readOnly: false
-    mountPath: /custom/path/
-    claimName: dbdumps
-    subPath: geodata-subpath
