@@ -12,12 +12,16 @@
     helm package -u charts/*
 
     # change branch to helm-repo
+    git checkout helm-repo
     # (move helm packages to helm-repo)
 
     helm repo index --url https://mundialis.github.io/helm-charts/ .
 
     git add . && git commit -m "pages commit"
     git push origin helm-repo
+
+    #change back to main branch
+    git checkout main
 
 ## examples
 
