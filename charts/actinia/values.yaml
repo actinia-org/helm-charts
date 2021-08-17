@@ -67,8 +67,11 @@ tolerations: []
 
 affinity: {}
 
-# TODO add option to add 'useExistingClaim'
 persistence:
+  customVolume:
+    enabled: false
+    #mountPath: /custom/path
+    #claimName: customVolumeClaimName
   enabled: false
   # useExistingClaim
   # if set to true you have to set claimName

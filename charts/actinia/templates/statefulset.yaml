@@ -89,7 +89,10 @@ spec:
               mountPath: /mnt/pgpass/
             - name: actinia-worker-workspace
               mountPath: /actinia_core/workspace/
-
+          {{- if .Values.persistence.customVolume.enabled }}
+            - name: customvolume
+              mountPath: {{ .Values.persistence.customVolume.mountPath }}
+          {{- end }}
           {{- if .Values.persistence.useExistingClaim }}
             - name: existingclaim
               mountPath: /actinia_core/grassdb/
@@ -129,6 +132,11 @@ spec:
       volumes:
         - name: temp
           emptyDir: {}
+        {{- if .Values.persistence.customVolume.enabled }}
+        - name: customvolume
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.customVolume.claimName }}
+        {{- end }}
         - name: init-configmap
           configMap:
             name: {{ include "actinia.fullname" . }}
