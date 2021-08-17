@@ -70,6 +70,7 @@ affinity: {}
 persistence:
   customVolume:
     enabled: false
+    readOnly: false
     #mountPath: /custom/path/
     #claimName: customVolumeClaimName
     #subPath: customVolumeSubPath
