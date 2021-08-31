@@ -110,6 +110,9 @@ config:
   actinia:
     workercount: 1
     password: actinia-gdi
+    cellLimit: "100000000000"
+    processNumLimit: "1000"
+    processTimeLimit: "31536000"
   redis: {}
     #host: actinia-redis-headless
     #port: 6379
