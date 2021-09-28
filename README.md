@@ -10,10 +10,17 @@
 
     helm lint charts/*
     helm package -u charts/*
+    # or only build a single chart
+    helm package -u charts/openeo-grassgis-driver/
+
+    # move charts locally
+    mv *.tgz ../
 
     # change branch to helm-repo
     git checkout helm-repo
-    # (move helm packages to helm-repo)
+
+    # move helm packages back. Mind other archives you might have in parent folder
+    mv ../*.tgz .
 
     helm repo index --url https://mundialis.github.io/helm-charts/ .
 
