@@ -68,14 +68,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /api/v1/health_check
+              path: /api/v2/health_check
               port: actinia-tcp
             periodSeconds: 30
             timeoutSeconds: 5
             failureThreshold: 10
           readinessProbe:
             httpGet:
-              path: /api/v1/health_check
+              path: /api/v2/health_check
               port: actinia-tcp
             timeoutSeconds: 5
           resources:
