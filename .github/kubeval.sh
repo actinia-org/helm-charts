@@ -20,7 +20,10 @@ tar -xf /tmp/kubeval.tar.gz kubeval
 
 # validate charts
 for CHART_DIR in ${CHART_DIRS}; do
-  echo "Validating $CHART_DIR"
-  (cd $CHART_DIR && helm dep up)
-  helm template "${CHART_DIR}" | ./kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION#v}" --schema-location "${SCHEMA_LOCATION}"
+  if [ -d $CHART_DIR ] && [ -f $CHART_DIR/Chart.yaml ]
+  then
+    echo "Validating $CHART_DIR"
+    (cd $CHART_DIR && helm dep up)
+    helm template "${CHART_DIR}" | ./kubeval --strict --ignore-missing-schemas --kubernetes-version "${KUBERNETES_VERSION#v}" --schema-location "${SCHEMA_LOCATION}"
+  fi
 done
