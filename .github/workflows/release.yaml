@@ -3,9 +3,9 @@ name: Release Charts
 on:
   push:
     branches:
-      - gha
-    # paths:
-    #   - 'charts/**'
+      - main
+    paths:
+      - 'charts/**'
 
 jobs:
   release:
