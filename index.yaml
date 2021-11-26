@@ -1,0 +1,374 @@
+apiVersion: v1
+entries:
+  actinia:
+  - apiVersion: v2
+    appVersion: 2.0.0.79
+    created: "2021-11-04T17:58:32.212851677+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: b45fd3f6647c98ed78dc3d3b88b7109e07ce522f5fa338e310051bd6f8874aeb
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.1.5.tgz
+    version: 1.1.5
+  - apiVersion: v2
+    appVersion: 1.1.0.79
+    created: "2021-11-04T17:58:32.204073136+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: a966762a7d4b56aba1b31b569aeacca6a7bd2f62449fa3dd6b1dd3039b4b8279
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.1.3.tgz
+    version: 1.1.3
+  - apiVersion: v2
+    appVersion: 1.0.3.79
+    created: "2021-11-04T17:58:32.19601585+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: d02d7f3cf2b7a3c255b067e099d52ece4f93baee71061444f38433d232812437
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
+    appVersion: 1.0.3.79
+    created: "2021-11-04T17:58:32.190729672+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 2dce3148a652afc70ae50c057835dec623bccf69c9cbf9a8b5f415f2e8af34ca
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.0.3.79
+    created: "2021-11-04T17:58:32.179677364+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 2fb854d24e4bf93e023a0244dcf180f31233b42e7328bf2e67956790b89472fc
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 1.0.3.79
+    created: "2021-11-04T17:58:32.169937452+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 47f482021c4974ca9f96e5ce1f1b36b231062fffacb0db1e5bc1032e3ba9ac4c
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 1.0.2.79
+    created: "2021-11-04T17:58:32.158865729+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 168687625447ea3195ca934f9a6f1b447a7de5435be525d3a0aa670d5b8cd83c
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 1.0.2.79
+    created: "2021-11-04T17:58:32.155054188+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: eff9d6409d8e1e7690da40eef82757ddb86237d5ec3197faaa150fa002547f86
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.1.79
+    created: "2021-11-04T17:58:32.147718995+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: d75a79735cb5d56c9ed8a0a11acf72901ada8374801bbc452a20567cdfed6cc3
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.1.79
+    created: "2021-11-04T17:58:32.140420818+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 9ccc24abbe6d435e559fed4fd195fb94a032e1a119c4aeb1fe988245fd9d9a29
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.13523619+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 496bf0475690b2a8e54769838a23aaf8fee8750faa56f29bbff2d430cc3e81e7
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.9.tgz
+    version: 0.0.9
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.125134149+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 2d7f3bfc79a49686fc8d07491b9279bed357d053fc5cdcd8193c94c1fca5cf36
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.8.tgz
+    version: 0.0.8
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.121140043+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 0d45aa7c176bc2d3e3ad8f24a2f27310e27c3d09d5b36c0be207a823c9d93acd
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.6.tgz
+    version: 0.0.6
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.110720152+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 78de97ba2b86d06708913dd56a71da0b565ce5c59c3690dae9efac8db9aa8931
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.5.tgz
+    version: 0.0.5
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.10426685+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: ce72c53be53087346beb104129bc7409ba2e73e14d7255d3665df5383218e6af
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.4.tgz
+    version: 0.0.4
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.095052636+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: e6e367c59b49e7fe8f12e5271113f445a69aceba9ff3051ce6faac8dc2eeb203
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.99.18
+    created: "2021-11-04T17:58:32.085560591+01:00"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: eb3393758151ca2d20871baac8f23723002f1f1e71a1ff32dfbbb87ce5da8a41
+    name: actinia
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/actinia-0.0.2.tgz
+    version: 0.0.2
+  openeo-grassgis-driver:
+  - apiVersion: v2
+    appVersion: 2.2.0
+    created: "2021-11-04T17:58:32.214626145+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 45d1b9e314e090ada3fcb15d5931c50d41c33940c3d4d12d9d29e4e66bc4e04b
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.12.tgz
+    version: 0.2.12
+  - apiVersion: v2
+    appVersion: 2.1.1
+    created: "2021-11-04T17:58:32.21430648+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: a82fb5edd5e28f1d261ad701a2bf2e40fba19bbcf864858598dbf3c4049d8215
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.11.tgz
+    version: 0.2.11
+  - apiVersion: v2
+    appVersion: 2.1.0
+    created: "2021-11-04T17:58:32.213998059+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 14f513938ac38bbb9f98f0dfb5e83b92185909066e55ef9282ed0013397ec88b
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.10.tgz
+    version: 0.2.10
+  - apiVersion: v2
+    appVersion: 2.0.9
+    created: "2021-11-04T17:58:32.217392435+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 092af0e39ef950f47968d05b2075037fb3db0d8b4aa0f39e90458f42c5ebe4e5
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.9.tgz
+    version: 0.2.9
+  - apiVersion: v2
+    appVersion: 2.0.7
+    created: "2021-11-04T17:58:32.216359406+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 283b832a551ec90875e1a92d8f07252c0ffbfcef9948370137b354124137d54a
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.8.tgz
+    version: 0.2.8
+  - apiVersion: v2
+    appVersion: 2.0.6
+    created: "2021-11-04T17:58:32.216006426+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 7c387ee335e690a31a379f8a576d4372a1ef4a63844a9ad3954d7bcbf9311c2e
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.7.tgz
+    version: 0.2.7
+  - apiVersion: v2
+    appVersion: 2.0.5
+    created: "2021-11-04T17:58:32.215680755+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 6fbf850a7512849745186edcebe5cc45b5e470b2f5ee2d9d839fa47c52c293af
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
+    appVersion: 2.0.3
+    created: "2021-11-04T17:58:32.215366257+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 50152bd24fc16830c451ffd159a245b457a204612bd9261cc390aa20ba68f935
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
+    appVersion: 1.0.3
+    created: "2021-11-04T17:58:32.214983525+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 255c5030ca00478333a3af6fca7ac32a2142ab684c88baa5851a46970f8f0900
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v2
+    appVersion: 1.0.3
+    created: "2021-11-04T17:58:32.213655765+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 4b00409292a575e23473b36510661efb297f8418895fbf0b5132946a21dcbf2f
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.0.3
+    created: "2021-11-04T17:58:32.21318999+01:00"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 3522d64f11da4b4c89afe2f36405bb0dbb9897108fe126c8eeb0752e30c004d9
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-grassgis-driver-0.1.0.tgz
+    version: 0.1.0
+  openeo-web-editor:
+  - apiVersion: v2
+    appVersion: v0.9.0
+    created: "2021-11-04T17:58:32.219653699+01:00"
+    description: A Helm chart for openeo-web-editor
+    digest: f3371b9687fd2148d0689de4e297ba042e46cd1bd5ce2f9d7ad26aaffc44e457
+    name: openeo-web-editor
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.7.0
+    created: "2021-11-04T17:58:32.218925809+01:00"
+    description: A Helm chart for openeo-web-editor
+    digest: b7e2736aadb7071356c2936045002d4e470b49d2ba6db86145330845ba638650
+    name: openeo-web-editor
+    type: application
+    urls:
+    - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-11-04T17:58:32.081647362+01:00"
