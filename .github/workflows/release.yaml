@@ -3,9 +3,9 @@ name: Release Charts
 on:
   push:
     branches:
-      - main
-    paths:
-      - 'charts/**'
+      - gha
+    # paths:
+    #   - 'charts/**'
 
 jobs:
   release:
@@ -19,7 +19,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - name: Run chart-releaser
         # gh-pages is the branch where this will be published, not configurable
-        uses: helm/chart-releaser-action@master
+        uses: helm/chart-releaser-action@main
         with:
           charts_dir: charts
         env:
