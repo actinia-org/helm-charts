@@ -1,11 +1,13 @@
+# This action will only create a release (e.g. actinia-1.1.5) in case a release
+# with current chart version does not exist yet. Then also index.yaml will be
+# updated in gh-pages branch
+
 name: Release Charts
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'charts/**'
 
 jobs:
   release:
