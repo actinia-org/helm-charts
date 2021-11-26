@@ -1,11 +1,13 @@
+# This action will only create a release (e.g. actinia-1.1.5) in case a release
+# with current chart version does not exist yet. Then also index.yaml will be
+# updated in gh-pages branch
+
 name: Release Charts
 
 on:
   push:
     branches:
       - main
-    paths:
-      - 'charts/**'
 
 jobs:
   release:
@@ -19,7 +21,7 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
       - name: Run chart-releaser
         # gh-pages is the branch where this will be published, not configurable
-        uses: helm/chart-releaser-action@master
+        uses: helm/chart-releaser-action@main
         with:
           charts_dir: charts
         env:

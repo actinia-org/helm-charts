@@ -7,28 +7,14 @@
     helm search repo mundialis -l
 
 ## commit changes to chart
+GitHub Actions for linting:
+- For each PR or change to main branch, the charts will be linted.
 
-    helm lint charts/*
-    helm package -u charts/*
-    # or only build a single chart
-    helm package -u charts/openeo-grassgis-driver/
-
-    # move charts locally
-    mv *.tgz ../
-
-    # change branch to helm-repo
-    git checkout helm-repo
-
-    # move helm packages back. Mind other archives you might have in parent folder
-    mv ../*.tgz .
-
-    helm repo index --url https://mundialis.github.io/helm-charts/ .
-
-    git add . && git commit -m "pages commit"
-    git push origin helm-repo
-
-    #change back to main branch
-    git checkout main
+GitHub Actions for releasing:
+- For each change to main branch (e.g. pull request is merged),
+a release is made for each chart in case the chart version was changed.
+- The release is named `<chart-name>-<chart-version>`.
+- The chart is packed, added to the release and the chart index is updated.
 
 ## examples
 
@@ -55,3 +41,11 @@ Make you local changes and then run e.g.
     mychart=openeo-grassgis-driver
 
     helm upgrade $mydeploymentname --install ./$mychart -f ./$mychart/values.yaml
+
+## pack a chart locally and update the index
+
+    helm lint charts/*
+    helm package -u charts/*
+    # or only build a single chart
+    helm package -u charts/openeo-grassgis-driver/
+    helm repo index --url https://mundialis.github.io/helm-charts/ .
