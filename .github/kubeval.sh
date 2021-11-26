@@ -1,7 +1,16 @@
 #!/bin/bash
 set -euo pipefail
 
-CHART_DIRS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+CHARTS="$(git diff --find-renames --name-only "$(git rev-parse --abbrev-ref HEAD)" remotes/origin/main -- charts)"
+
+# prevent pipefail if no changes in charts
+if [ "$(echo ${CHARTS} | grep '[cC]hart.yaml')" != "" ]
+then
+  CHART_DIRS="$(echo ${CHARTS} | grep '[cC]hart.yaml' | sed -e 's#/[Cc]hart.yaml##g')"
+else
+  CHART_DIRS=""
+fi
+
 KUBEVAL_VERSION="0.14.0"
 SCHEMA_LOCATION="https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/"
 
