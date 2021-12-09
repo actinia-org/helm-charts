@@ -56,7 +56,7 @@ data:
     grass_addon_path = /root/.grass7/addons/
 
     [API]
-    plugins = ["actinia_module_plugin"]
+    plugins = ["actinia_module_plugin", "actinia_stac_plugin"]
     force_https_urls = True
 
     [REDIS]
