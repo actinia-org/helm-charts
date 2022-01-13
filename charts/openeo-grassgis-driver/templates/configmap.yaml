@@ -19,3 +19,6 @@ data:
     {{- if .Values.config.actinia_locations }}
     LOCATIONS = {{ .Values.config.actinia_locations }}
     {{- end }}
+    {{- if .Values.config.actinia_version }}
+    VERSION = {{ .Values.config.actinia_version }}
+    {{- end }}
