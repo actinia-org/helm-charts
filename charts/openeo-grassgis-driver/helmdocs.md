@@ -14,6 +14,7 @@ Current chart version is `0.2.17`
 |-----|------|---------|-------------|
 | affinity | object | `{}` |  |
 | config.actinia_host | string | `"https://actinia-dev.mundialis.de"` |  |
+| config.actinia_version | string | `"v3"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"mundialis/openeo-grassgis-driver"` |  |
