@@ -2,7 +2,7 @@ actinia
 =======
 A Helm chart for actinia
 
-Current chart version is `1.1.11`
+Current chart version is `1.2.0`
 
 
 
@@ -25,7 +25,7 @@ Current chart version is `1.1.11`
 | config.redis | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mundialis/actinia-core"` |  |
+| image.repository | string | `"mundialis/actinia"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |

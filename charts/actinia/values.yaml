@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mundialis/actinia-core
+  repository: mundialis/actinia
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
