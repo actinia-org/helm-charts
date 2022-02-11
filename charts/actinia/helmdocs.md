@@ -2,7 +2,7 @@ actinia
 =======
 A Helm chart for actinia
 
-Current chart version is `1.2.0`
+Current chart version is `1.2.1`
 
 
 
