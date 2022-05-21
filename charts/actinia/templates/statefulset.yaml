@@ -194,8 +194,8 @@ spec:
             items:
               - key: .pgpass
                 path: .pgpass
-              - key: .grass7
-                path: .grass7
+              - key: .grass8
+                path: .grass8
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
