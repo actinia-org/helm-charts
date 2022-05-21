@@ -3,6 +3,20 @@ entries:
   actinia:
   - apiVersion: v2
     appVersion: 2.2.2
+    created: "2022-05-21T15:09:56.03786205Z"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: "12"
+    description: A Helm chart for actinia
+    digest: 19e1b47adaefc9dbe0c09a3082da4e9dbbb16888a17dca7538e4d162afa48161
+    name: actinia
+    type: application
+    urls:
+    - https://github.com/mundialis/helm-charts/releases/download/actinia-2.2.3/actinia-2.2.3.tgz
+    version: 2.2.3
+  - apiVersion: v2
+    appVersion: 2.2.2
     created: "2022-05-21T13:17:55.10279125Z"
     dependencies:
     - name: redis
@@ -679,4 +693,4 @@ entries:
     urls:
     - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-21T13:17:55.103220546Z"
+generated: "2022-05-21T15:09:56.038343147Z"
