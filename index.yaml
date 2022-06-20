@@ -493,6 +493,16 @@ entries:
     version: 0.0.2
   openeo-grassgis-driver:
   - apiVersion: v2
+    appVersion: 2.3.6
+    created: "2022-06-20T16:25:39.680053552Z"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: 75548cb2373003f246e96d8e58f41e58f32211dc566b87bf27e62704a23dc0f2
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://github.com/mundialis/helm-charts/releases/download/openeo-grassgis-driver-0.2.20/openeo-grassgis-driver-0.2.20.tgz
+    version: 0.2.20
+  - apiVersion: v2
     appVersion: 2.3.5
     created: "2022-04-07T08:58:55.118291717Z"
     description: A Helm chart for openeo-grassgis-driver
@@ -693,4 +703,4 @@ entries:
     urls:
     - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-05-21T15:09:56.038343147Z"
+generated: "2022-06-20T16:25:39.680472657Z"
