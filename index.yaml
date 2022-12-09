@@ -764,6 +764,16 @@ entries:
     version: 0.1.0
   openeo-web-editor:
   - apiVersion: v2
+    appVersion: v0.12.0
+    created: "2022-12-09T15:27:38.484006493Z"
+    description: A Helm chart for openeo-web-editor
+    digest: 47c929935d380806c59d9a3a8e5db7b8b946d1203c0e9fa9d01bffd00e32b2d9
+    name: openeo-web-editor
+    type: application
+    urls:
+    - https://github.com/mundialis/helm-charts/releases/download/openeo-web-editor-0.1.2/openeo-web-editor-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     appVersion: v0.9.0
     created: "2021-11-04T17:58:32.219653699+01:00"
     description: A Helm chart for openeo-web-editor
@@ -783,4 +793,4 @@ entries:
     urls:
     - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-09T15:02:12.834380294Z"
+generated: "2022-12-09T15:27:38.484126094Z"
