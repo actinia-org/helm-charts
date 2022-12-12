@@ -2,7 +2,7 @@ openeo-grassgis-driver
 ======================
 A Helm chart for openeo-grassgis-driver
 
-Current chart version is `0.2.29`
+Current chart version is `0.2.30`
 
 
 
