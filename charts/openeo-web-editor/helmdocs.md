@@ -2,7 +2,7 @@ openeo-web-editor
 =================
 A Helm chart for openeo-web-editor
 
-Current chart version is `0.1.2`
+Current chart version is `0.1.3`
 
 
 
