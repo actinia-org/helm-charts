@@ -23,4 +23,6 @@ appVersion: 2.2.2
 dependencies:
 - name: redis
   version: "12"
-  repository: "https://charts.bitnami.com/bitnami"
+  # repository: "https://charts.bitnami.com/bitnami"
+  # old versions of redis are not part of the bitnami repo anymore, see https://github.com/bitnami/charts/issues/10663#issuecomment-1149908401
+  repository: "https://raw.githubusercontent.com/bitnami/charts/eb5f9a9513d987b519f0ecd732e7031241c50328/bitnami"
