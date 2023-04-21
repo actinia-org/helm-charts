@@ -54,7 +54,7 @@ Current chart version is `2.2.3`
 | persistence.userdata.storageClassName | string | `"default"` |  |
 | persistence.userdata.storageSize | string | `"10Gi"` |  |
 | podSecurityContext | object | `{}` |  |
-| redis.cluster.enabled | bool | `false` |  |
+| redis.architecture | string | `standalone` |  |
 | redis.master.persistence.enabled | bool | `false` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
