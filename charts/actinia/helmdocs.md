@@ -25,7 +25,7 @@ Current chart version is `2.2.3`
 | config.redis | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mundialis/actinia"` |  |
+| image.repository | string | `"actinia-org/actinia"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |

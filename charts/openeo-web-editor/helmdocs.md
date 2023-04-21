@@ -19,7 +19,7 @@ Current chart version is `0.1.2`
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.repository | string | `"mundialis/openeo-web-editor"` |  |
+| image.repository | string | `"actinia-org/openeo-web-editor"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.className | string | `""` |  |

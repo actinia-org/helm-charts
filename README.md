@@ -1,10 +1,10 @@
 # helm-charts
 
-## mundialis helm repo
+## actinia-org helm repo
 
-    helm repo add mundialis https://mundialis.github.io/helm-charts/
+    helm repo add actinia-org https://actinia-org.github.io/helm-charts/
     helm repo update
-    helm search repo mundialis -l
+    helm search repo actinia-org -l
 
 ## commit changes to chart
 GitHub Actions for linting:
@@ -19,18 +19,17 @@ a release is made for each chart in case the chart version was changed.
 ## examples
 
 ### prerequisites
-    helm repo add mundialis https://mundialis.github.io/helm-charts/
+    helm repo add actinia-org https://actinia-org.github.io/helm-charts/
     helm repo update
 
 ### install actinia with default values
-    helm upgrade --install actinia mundialis/actinia
+    helm upgrade --install actinia actinia-org/actinia
 
 ### install actinia with persistence
-    helm upgrade --install actinia mundialis/actinia --set "persistence.enabled=true" --set "redis.master.persistence.enabled=true"
+    helm upgrade --install actinia actinia-org/actinia --set "persistence.enabled=true" --set "redis.master.persistence.enabled=true"
 
 ### install actinia with ingress enabled
-    helm upgrade --install actinia mundialis/actinia --set "ingress.enabled=true"
-
+    helm upgrade --install actinia actinia-org/actinia --set "ingress.enabled=true"
 
 # Local testing
 
@@ -48,4 +47,4 @@ Make you local changes and then run e.g.
     helm package -u charts/*
     # or only build a single chart
     helm package -u charts/openeo-grassgis-driver/
-    helm repo index --url https://mundialis.github.io/helm-charts/ .
+    helm repo index --url https://actinia-org.github.io/helm-charts/ .
