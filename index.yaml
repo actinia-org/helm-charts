@@ -3,6 +3,20 @@ entries:
   actinia:
   - apiVersion: v2
     appVersion: 2.2.2
+    created: "2023-05-02T08:27:45.53008738Z"
+    dependencies:
+    - name: redis
+      repository: https://charts.bitnami.com/bitnami
+      version: 17.9.5
+    description: A Helm chart for actinia
+    digest: 5e126c4900d6d3249d1ce004eb26cc66898907d6867cd126b2ab1180c87b1667
+    name: actinia
+    type: application
+    urls:
+    - https://github.com/actinia-org/helm-charts/releases/download/actinia-2.2.4/actinia-2.2.4.tgz
+    version: 2.2.4
+  - apiVersion: v2
+    appVersion: 2.2.2
     created: "2022-05-21T15:09:56.03786205Z"
     dependencies:
     - name: redis
@@ -494,6 +508,16 @@ entries:
   openeo-grassgis-driver:
   - apiVersion: v2
     appVersion: 2.5.3
+    created: "2023-05-02T08:27:45.633213382Z"
+    description: A Helm chart for openeo-grassgis-driver
+    digest: c0c08c6ce6e079a3f502ca8b38211ebbd21a72e207b9d1387e750233d4ceb8e8
+    name: openeo-grassgis-driver
+    type: application
+    urls:
+    - https://github.com/actinia-org/helm-charts/releases/download/openeo-grassgis-driver-0.2.32/openeo-grassgis-driver-0.2.32.tgz
+    version: 0.2.32
+  - apiVersion: v2
+    appVersion: 2.5.3
     created: "2022-12-12T22:15:08.801272448Z"
     description: A Helm chart for openeo-grassgis-driver
     digest: 8e9ed2620b29ccd6b991438d08b23ee6795e5b287b4814cf30341c5b63788c52
@@ -795,6 +819,16 @@ entries:
   openeo-web-editor:
   - apiVersion: v2
     appVersion: v0.12.0
+    created: "2023-05-02T08:27:45.793467074Z"
+    description: A Helm chart for openeo-web-editor
+    digest: 96772df130adfb6e3254d4ce720510ae07a8b1460568294bbbd969b06d8fabdb
+    name: openeo-web-editor
+    type: application
+    urls:
+    - https://github.com/actinia-org/helm-charts/releases/download/openeo-web-editor-0.1.3/openeo-web-editor-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: v0.12.0
     created: "2022-12-09T15:27:38.484006493Z"
     description: A Helm chart for openeo-web-editor
     digest: 47c929935d380806c59d9a3a8e5db7b8b946d1203c0e9fa9d01bffd00e32b2d9
@@ -823,4 +857,4 @@ entries:
     urls:
     - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
     version: 0.1.0
-generated: "2022-12-12T22:15:08.801570457Z"
+generated: "2023-05-02T08:27:45.793953274Z"
