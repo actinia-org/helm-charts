@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mundialis/openeo-grassgis-driver
+  repository: actinia-org/openeo-grassgis-driver
   pullPolicy: IfNotPresent
 
 config:

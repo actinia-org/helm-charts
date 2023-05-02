@@ -2,7 +2,7 @@ actinia
 =======
 A Helm chart for actinia
 
-Current chart version is `2.2.3`
+Current chart version is `2.2.4`
 
 
 
@@ -10,7 +10,7 @@ Current chart version is `2.2.3`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://charts.bitnami.com/bitnami | redis | 12 |
+| https://charts.bitnami.com/bitnami | redis | 17.9.5 |
 
 ## Chart Values
 
@@ -25,7 +25,7 @@ Current chart version is `2.2.3`
 | config.redis | object | `{}` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mundialis/actinia"` |  |
+| image.repository | string | `"actinia-org/actinia"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
@@ -54,7 +54,7 @@ Current chart version is `2.2.3`
 | persistence.userdata.storageClassName | string | `"default"` |  |
 | persistence.userdata.storageSize | string | `"10Gi"` |  |
 | podSecurityContext | object | `{}` |  |
-| redis.cluster.enabled | bool | `false` |  |
+| redis.architecture | string | `"standalone"` |  |
 | redis.master.persistence.enabled | bool | `false` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

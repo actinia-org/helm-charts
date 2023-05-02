@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mundialis/openeo-web-editor
+  repository: actinia-org/openeo-web-editor
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   # tag: "latest"

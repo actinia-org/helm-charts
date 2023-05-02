@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: mundialis/actinia
+  repository: actinia-org/actinia
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
@@ -118,11 +118,11 @@ config:
     #port: 6379
     #password: password
 
-# https://github.com/bitnami/charts/tree/master/bitnami/redis
+# https://github.com/bitnami/charts/tree/main/bitnami/redis
 redis:
-  #password: password
-  cluster:
-    enabled: false
+  # auth:
+  #   password: password
+  architecture: standalone
   master:
     persistence:
       enabled: false

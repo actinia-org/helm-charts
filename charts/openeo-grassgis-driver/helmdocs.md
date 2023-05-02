@@ -2,7 +2,7 @@ openeo-grassgis-driver
 ======================
 A Helm chart for openeo-grassgis-driver
 
-Current chart version is `0.2.31`
+Current chart version is `0.2.32`
 
 
 
@@ -17,7 +17,7 @@ Current chart version is `0.2.31`
 | config.actinia_version | string | `"v3"` |  |
 | fullnameOverride | string | `""` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"mundialis/openeo-grassgis-driver"` |  |
+| image.repository | string | `"actinia-org/openeo-grassgis-driver"` |  |
 | imagePullSecrets | list | `[]` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
