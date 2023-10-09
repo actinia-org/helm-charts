@@ -11,6 +11,8 @@ on:
 
 jobs:
   release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,4 +27,4 @@ jobs:
         with:
           charts_dir: charts
         env:
-          CR_TOKEN: '${{ secrets.CR_TOKEN }}'
+          CR_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
