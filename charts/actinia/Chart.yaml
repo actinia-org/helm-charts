@@ -22,5 +22,5 @@ appVersion: 2.6.3
 
 dependencies:
 - name: redis
-  version: "17.9.5"
+  version: "21.2.14"
   repository: "https://charts.bitnami.com/bitnami"
