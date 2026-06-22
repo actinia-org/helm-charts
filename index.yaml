@@ -871,4 +871,14 @@ entries:
     urls:
     - https://mundialis.github.io/helm-charts/openeo-web-editor-0.1.0.tgz
     version: 0.1.0
-generated: "2023-10-09T11:48:42.312991883Z"
+  - apiVersion: v2
+    appVersion: v0.15.2
+    created: "2026-06-22T13:42:18.63059685+02:00"
+    description: A Helm chart for openeo-web-editor
+    digest: 08bb6e33b31c9f31c101e86eff065d5e60715fc6ae2f64c016ed0f4f2d7f31ab
+    name: openeo-web-editor
+    type: application
+    urls:
+    - https://actinia-org.github.io/helm-charts/openeo-web-editor-0.1.5.tgz
+    version: 0.1.5
+generated: "2021-11-04T17:58:32.081647362+01:00"
